@@ -25,4 +25,4 @@ The file `MultiGPUs_training.py` can be used for training the architecture of Cl
 ## Test-time Adaptation
 
 At test-time, we utilize `test_adapt_projector.py` to adapt our model which should be defined as in source training using `configuration.py`.
-Depending on the `--niter` choosen between [1, 3, 5, 10, 20, 50, 100], we obtain the accuracy for each number of iterations from the list up to the `--niter`..
+Depending on the `--niter` choosen between [1, 3, 5, 10, 20, 50, 100], we obtain the accuracy for each number of iterations from the list up to the `--niter`.
