@@ -1,6 +1,6 @@
 # ClusT3 on the CIFAR datasets
 
-### Datasets
+## Datasets
 
 The experiments utilize the CIFAR-10 training split as the source dataset. It can be downloaded from 
 [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz), or can also be done using torchvision
