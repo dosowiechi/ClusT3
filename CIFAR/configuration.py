@@ -32,7 +32,7 @@ def argparser():
     parser.add_argument('--workers', type=int, default=6, help='Number of workers for dataloader')
 
     #Source training
-    parser.add_argument('--epochs', type=int, default=100, help='Number of base training epochs')
+    parser.add_argument('--epochs', type=int, default=350, help='Number of base training epochs')
     parser.add_argument('--start-epoch', type=int, default=0, help='Manual epoch number for restarts')
     parser.add_argument('--batch-size', type=int, default=128, help='Batch size for base training')
     parser.add_argument('--lr', type=float, default=0.1, help='Learning rate')
