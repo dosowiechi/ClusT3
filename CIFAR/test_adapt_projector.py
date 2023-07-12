@@ -1,7 +1,6 @@
 import torch
 import torch.backends.cudnn as cudnn
 from tqdm import tqdm
-import os
 
 import configuration
 import numpy as np
@@ -28,6 +27,7 @@ def experiment(args):
 
     '''-------------------Optimizer----------------------------------'''
     extractor = projector.get_part(model, args.extract_layer)
+    optimizer = torch.optim.Adam(extractor.parameters(), lr=args.adapt_lr)
 
     '''-------------------Loading Dataset----------------------------'''
     teloader, _ = prepare_dataset.prepare_test_data(args)

@@ -1,4 +1,5 @@
-from models import ResNet_MultiProj
+from CIFAR.models import ResNet_MultiProj
+
 
 def model_sizes(args, layer):
     if args.dataset == 'imagenet':

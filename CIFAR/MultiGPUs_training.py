@@ -7,7 +7,6 @@ import torch.backends.cudnn as cudnn
 import math
 
 from utils import create_model, prepare_dataset, utils
-from models import projector
 import configuration
 
 

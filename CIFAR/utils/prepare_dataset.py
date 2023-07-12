@@ -35,7 +35,7 @@ def prepare_test_data(args):
             teset.data = teset_raw
 
         elif args.corruption == 'cifar_new':
-            from utils.cifar_new import CIFAR_New
+            from CIFAR.utils.cifar_new import CIFAR_New
             teset = CIFAR_New(root=args.dataroot + '/CIFAR-10.1/', transform=te_transforms)
             permute = False
         else:
