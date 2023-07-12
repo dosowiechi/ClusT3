@@ -17,12 +17,12 @@ The repository is divided into two directories: one for the datasets under CIFAR
 If you found this repository, or its related paper useful for your research, you can cite this work as:
 
 ```
-@inproceedings{TTTFlow2023,
+@inproceedings{ClusT32023,
   title={ClusT3: Information Invariant Test-Time Training},
   author={Gustavo A. Vargas Hakim and David Osowiechi and Mehrdad Noori  and Milad Cheraghalikhani and Ali Bahri  and Ismail Ben Ayed and Christian Desrosiers},
   booktitle={***},
   pages={},
-  month={January},
+  month={October},
   year={2023}
 }
 ```
