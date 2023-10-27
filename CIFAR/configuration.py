@@ -16,12 +16,13 @@ def argparser():
     #Model
     parser.add_argument('--model', type=str, default='resnet50')
     parser.add_argument('--loss', type=int, default=1)
-    parser.add_argument('--multi', type=int, default=5)
+    parser.add_argument('--multi', type=int, default=5, help='Num of projectors per layer')
     parser.add_argument('--project-layer1', default=None)
     parser.add_argument('--project-layer2', default=None)
     parser.add_argument('--project-layer3', default=None)
     parser.add_argument('--project-layer4', default=None)
     parser.add_argument('--extract-layer', type=int, default=3)
+    parser.add_argument('--K', type=int, default=10, help='Num of clusters')
     parser.add_argument('--projection', action='store_true', help='Using projectors')
     parser.add_argument('--eval', action='store_true', help='Using Eval at training')
     parser.add_argument('--load', type=str)
@@ -32,7 +33,7 @@ def argparser():
     parser.add_argument('--workers', type=int, default=6, help='Number of workers for dataloader')
 
     #Source training
-    parser.add_argument('--epochs', type=int, default=100, help='Number of base training epochs')
+    parser.add_argument('--epochs', type=int, default=350, help='Number of base training epochs')
     parser.add_argument('--start-epoch', type=int, default=0, help='Manual epoch number for restarts')
     parser.add_argument('--batch-size', type=int, default=128, help='Batch size for base training')
     parser.add_argument('--lr', type=float, default=0.1, help='Learning rate')
@@ -49,7 +50,6 @@ def argparser():
     parser.add_argument('--adapt-lr', default=0.00001, type=float)
     parser.add_argument('--niter', default=50, type=int)
     parser.add_argument('--best', action='store_true', help='Using best pretraining weights or not')
-    parser.add_argument('--K', type=int, default=10, help='Num of classes')
 
     #Distributed
     parser.add_argument('--distributed', action='store_true', help='Activate distributed training')

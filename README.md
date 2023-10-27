@@ -1,7 +1,7 @@
 # ClusT3
 
 Official repository of the ICCV 2023 paper "ClusT3: Information Invariant Test-Time Training", by Gustavo A. Vargas Hakim, David Osowiechi, Mehrdad Noori, Milad Cheraghalikhani, Ali Bahri, Ismail Ben Ayed, and Christian Desrosiers.
-The whole article can be found [here](https://arxiv.org/*********).
+The whole article can be found [here](https://openaccess.thecvf.com/content/ICCV2023/html/Hakim_ClusT3_Information_Invariant_Test-Time_Training_ICCV_2023_paper.html).
 This work was greatly inspired by the code in [TTTFlow](https://github.com/GustavoVargasHakim/TTTFlow/).
 
 We propose a novel unsupervised TTT technique based on the maximization of Mutual Information between multi-scale feature maps and a discrete latent representation, which can be integrated to the standard training as an auxiliary clustering task.
@@ -17,12 +17,12 @@ The repository is divided into two directories: one for the datasets under CIFAR
 If you found this repository, or its related paper useful for your research, you can cite this work as:
 
 ```
-@inproceedings{TTTFlow2023,
+@inproceedings{ClusT32023,
   title={ClusT3: Information Invariant Test-Time Training},
   author={Gustavo A. Vargas Hakim and David Osowiechi and Mehrdad Noori  and Milad Cheraghalikhani and Ali Bahri  and Ismail Ben Ayed and Christian Desrosiers},
   booktitle={***},
   pages={},
-  month={January},
+  month={October},
   year={2023}
 }
 ```
