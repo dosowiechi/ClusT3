@@ -4,10 +4,17 @@ import torchvision
 import torchvision.transforms as transforms
 import numpy as np
 
+from utils.tiny_imagenet import TinyImageNetDataset
+from utils.tiny_imagenet_c import TinyImageNetCDataset
+
 NORM = ((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))
 te_transforms = transforms.Compose([transforms.ToTensor(),
                                     transforms.Normalize(*NORM)])
 tr_transforms = transforms.Compose([transforms.RandomCrop(32, padding=4),
+                                    transforms.RandomHorizontalFlip(),
+                                    transforms.ToTensor(),
+                                    transforms.Normalize(*NORM)])
+tinyimagenet_transforms = transforms.Compose([transforms.RandomCrop(64, padding=4),
                                     transforms.RandomHorizontalFlip(),
                                     transforms.ToTensor(),
                                     transforms.Normalize(*NORM)])
@@ -35,7 +42,7 @@ def prepare_test_data(args):
             teset.data = teset_raw
 
         elif args.corruption == 'cifar_new':
-            from CIFAR.utils.cifar_new import CIFAR_New
+            from utils.cifar_new import CIFAR_New
             teset = CIFAR_New(root=args.dataroot + '/CIFAR-10.1/', transform=te_transforms)
             permute = False
         else:
@@ -53,6 +60,12 @@ def prepare_test_data(args):
                 train=False, download=False, transform=te_transforms)
 
             teset.data = teset_raw
+    elif args.dataset == 'tiny-imagenet':
+        if not hasattr(args, 'corruption') or args.corruption == 'original':
+            teset = TinyImageNetDataset(args.dataroot + '/tiny-imagenet-200/', mode='val', transform=te_transforms)
+        elif args.corruption in common_corruptions:
+            teset = TinyImageNetCDataset(args.dataroot + '/Tiny-ImageNet-C/', corruption = args.corruption, level = args.level,
+                                        transform=te_transforms)
     else:
         raise Exception('Dataset not found!')
 
@@ -79,6 +92,8 @@ def prepare_train_data(args):
             train=True, download=False, transform=tr_transforms)
     elif args.dataset == 'cifar100':
         trset = torchvision.datasets.CIFAR100(root=args.dataroot, train=True, download=False, transform=tr_transforms)
+    elif args.dataset == 'tiny-imagenet':
+        trset = TinyImageNetDataset(args.dataroot + '/tiny-imagenet-200/', transform=tinyimagenet_transforms)
     else:
         raise Exception('Dataset not found!')
 

@@ -39,17 +39,11 @@ def create_model(args, proj_layers, weights=None):
     #Creating model based on dataset
     if args.dataset == 'cifar10':
         num_classes = 10
-        # if args.multi == 1 :
-        #     model = ResNet_projector.resnet50(num_classes, proj_layers, K=args.K)
-        # if args.multi != 1 :
-        model = ResNet_MultiProj.resnet50(num_classes, proj_layers, K=args.K, multi=args.multi)
-        #model = ResNet.resnet50(num_classes)
-    if args.dataset == 'cifar100':
+    elif args.dataset == 'cifar100':
         num_classes = 100
-        # if args.multi == 1 :
-        #     model = ResNet_projector.resnet50(num_classes, proj_layers, K=args.K)
-        # if args.multi != 1 :
-        model = ResNet_MultiProj.resnet50(num_classes, proj_layers, K=args.K, multi=args.multi)
+    elif args.dataset == 'tiny-imagenet':
+        num_classes = 200
+    model = ResNet_MultiProj.resnet50(num_classes, proj_layers, K=args.K, multi=args.multi)
     #Loading weights
     if weights is not None:
         model.load_state_dict(weights, strict=False)

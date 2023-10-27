@@ -19,34 +19,17 @@ def main(args):
     # checkpoint = torch.load(args.root + 'weights/BestClassification.pth')
     # weights = checkpoint['net']
 
-    ngpus_per_node = torch.cuda.device_count()
-    local_rank = int(os.environ.get("SLURM_LOCALID"))
-    rank = int(os.environ.get("SLURM_NODEID")) * ngpus_per_node + local_rank
-    current_device = local_rank
-    torch.cuda.set_device(current_device)
-    if rank == 0:
-        print('From Rank: {}, ==> Initializing Process Group...'.format(rank))
-    dist.init_process_group(backend=args.dist_backend, init_method=args.init_method, world_size=args.world_size,
-                            rank=rank)
-
-    args.batch_size = int(args.batch_size / ngpus_per_node)
-    args.workers = int((args.workers + ngpus_per_node - 1) / ngpus_per_node)
-
     args.corruption = 'original'
 
-    if rank == 0:
-       print('From Rank: {}, ==> Making model..'.format(rank))
 
     proj_layer = [args.project_layer1, args.project_layer2, args.project_layer3, args.project_layer4]
     model = create_model.create_model(args, proj_layer).cuda()
-    model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[current_device])
-
     if args.resume:
         checkpoint = torch.load(args.resume)
         args.start_epoch = checkpoint['epoch']
         best_acc1 = checkpoint['best_acc1']
 
-    optimizer = torch.optim.SGD(model.module.parameters(), args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
+    optimizer = torch.optim.SGD(model.parameters(), args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
     if args.dataset == 'tiny-imagenet':
         scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, args.epochs)
     else:
@@ -66,57 +49,54 @@ def main(args):
     print('\t\tTrain Loss \t\t Train Accuracy \t\t Val Loss \t\t Val Accuracy')
 
     for epoch in range(args.start_epoch, args.epochs):
-        trsampler.set_epoch(epoch)
-        tesampler.set_epoch(epoch)
         acc_train, loss_train = train(model, optimizer, trloader, args)
         acc_val, loss_val = validate(model, teloader, args)
         scheduler.step()
 
-        if rank == 0:
-            print(('Epoch %d/%d:' % (epoch, args.epochs)).ljust(24) +
+        print(('Epoch %d/%d:' % (epoch, args.epochs)).ljust(24) +
                       '%.2f\t\t%.2f\t\t%.2f\t\t%.2f' % (loss_train, acc_train, loss_val, acc_val))
 
         is_best = loss_val < best_uns
         best_uns = max(loss_val, best_uns)
 
-        if rank == 0:
-            if proj_layer[0] != None:
-                    dict = {
-                        'epoch': epoch + 1,
-                        'arch': args.model,
-                        'state_dict': model.module.state_dict(),
-                        'projector': model.module.projector1.state_dict(),
-                        'best_uns': best_uns,
-                        'optimizer': optimizer.state_dict(),
-                    }
-            if proj_layer[1] != None:
-                    dict = {
-                        'epoch': epoch + 1,
-                        'arch': args.model,
-                        'state_dict': model.module.state_dict(),
-                        'projector': model.module.projector2.state_dict(),
-                        'best_uns': best_uns,
-                        'optimizer': optimizer.state_dict(),
-                    }
-            if proj_layer[2] != None:
-                    dict = {
-                        'epoch': epoch + 1,
-                        'arch': args.model,
-                        'state_dict': model.module.state_dict(),
-                        'projector': model.module.projector3.state_dict(),
-                        'best_uns': best_uns,
-                        'optimizer': optimizer.state_dict(),
-                    }
-            if proj_layer[3] != None:
-                    dict = {
-                        'epoch': epoch + 1,
-                        'arch': args.model,
-                        'state_dict': model.module.state_dict(),
-                        'projector': model.module.projector4.state_dict(),
-                        'best_uns': best_uns,
-                        'optimizer': optimizer.state_dict(),
-                    }
-            utils.save_checkpoint(dict, is_best, args)
+
+        if proj_layer[0] != None:
+                dict = {
+                    'epoch': epoch + 1,
+                    'arch': args.model,
+                    'state_dict': model.state_dict(),
+                    'projector': model.projector1.state_dict(),
+                    'best_uns': best_uns,
+                    'optimizer': optimizer.state_dict(),
+                }
+        if proj_layer[1] != None:
+                dict = {
+                    'epoch': epoch + 1,
+                    'arch': args.model,
+                    'state_dict': model.state_dict(),
+                    'projector': model.projector2.state_dict(),
+                    'best_uns': best_uns,
+                    'optimizer': optimizer.state_dict(),
+                }
+        if proj_layer[2] != None:
+                dict = {
+                    'epoch': epoch + 1,
+                    'arch': args.model,
+                    'state_dict': model.state_dict(),
+                    'projector': model.projector3.state_dict(),
+                    'best_uns': best_uns,
+                    'optimizer': optimizer.state_dict(),
+                }
+        if proj_layer[3] != None:
+                dict = {
+                    'epoch': epoch + 1,
+                    'arch': args.model,
+                    'state_dict': model.state_dict(),
+                    'projector': model.projector4.state_dict(),
+                    'best_uns': best_uns,
+                    'optimizer': optimizer.state_dict(),
+                }
+        utils.save_checkpoint(dict, is_best, args)
 
 def train(model, optimizer, train_loader, args):
     batch_time = utils.AverageMeter('Time', ':6.3f')

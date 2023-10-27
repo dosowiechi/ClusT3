@@ -101,6 +101,8 @@ class ResNet(nn.Module):
             for k in range(multi):
                 self.projector4.append(nn.Conv2d(2048, K, kernel_size=1)) #Linear(2048*4*4, num_classes)
 
+        self.AdaptiveAvgPool = nn.AdaptiveAvgPool2d((1, 1))
+
     def _make_layer(self, block, planes, num_blocks, stride):
         strides = [stride] + [1]*(num_blocks-1)
         layers = []
@@ -136,10 +138,10 @@ class ResNet(nn.Module):
                 z4 = proj(out)
                 z4 = z4.view(z4.size(1), -1)
                 out_proj.append(z4)
-        out = F.avg_pool2d(out, 4)
-        out = out.view(out.size(0), -1)
+        # out = F.avg_pool2d(out, 4)
+        out = self.AdaptiveAvgPool(out)
         features = out
-        out = self.fc(out)
+        out = self.fc(out.squeeze())
         if feature:
             if projection:
                 return out, features, out_proj

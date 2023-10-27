@@ -27,7 +27,7 @@ def argparser():
     parser.add_argument('--load', type=str)
 
     #Dataset
-    parser.add_argument('--dataset', type=str, default='cifar10', choices=('cifar10', 'cifar100', 'imagenet'))
+    parser.add_argument('--dataset', type=str, default='cifar10', choices=('cifar10', 'cifar100', 'imagenet','tiny-imagenet'))
     parser.add_argument('--target', type=str, default='cifar10')
     parser.add_argument('--workers', type=int, default=6, help='Number of workers for dataloader')
 
