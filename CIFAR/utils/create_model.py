@@ -1,4 +1,4 @@
-from CIFAR.models import ResNet_MultiProj
+from models import ResNet_MultiProj
 
 
 def model_sizes(args, layer):

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e7b81c5-73e8-4596-a6df-130ec8152d4d" name="Changes" comment="" />
+    <list default="true" id="2e7b81c5-73e8-4596-a6df-130ec8152d4d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/ClusT3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ClusT3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +13,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="e3f53b51-67df-4505-8400-83be8178e90f" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -24,9 +31,44 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/davidoso/Documents/PythonScripts/Winter2023/ClusT3&quot;
+    &quot;last_opened_file_path&quot;: &quot;/home/davidoso/Documents/PythonScripts/Winter2023/ClusT3/CIFAR&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/CIFAR" />
+      <recent name="$PROJECT_DIR$/CIFAR/utils" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="training" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ClusT3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CIFAR" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CIFAR/training.py" />
+      <option name="PARAMETERS" value="--batch-size 32 --project-layer1 1 --project-layer2 1 --multi 15 --save $PROJECT_DIR$/CIFAR/weights/tmp/ --dataset tiny-imagenet" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.training" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -41,12 +83,47 @@
       <workItem from="1688592392792" duration="296000" />
       <workItem from="1688736945498" duration="613000" />
       <workItem from="1688739201083" duration="333000" />
-      <workItem from="1689169790158" duration="2634000" />
-      <workItem from="1689185162991" duration="923000" />
+      <workItem from="1689169790158" duration="3298000" />
+      <workItem from="1692280253274" duration="11000" />
+      <workItem from="1692281450816" duration="1355000" />
+      <workItem from="1697644628820" duration="1205000" />
+      <workItem from="1697716716309" duration="16000" />
+      <workItem from="1698426652692" duration="3545000" />
     </task>
+    <task id="LOCAL-00001" summary="Add Tiny-imagenet">
+      <created>1698439752452</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698439752452</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add Tiny-imagenet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Tiny-imagenet" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CIFAR/models/ResNet_MultiProj.py</url>
+          <line>142</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CIFAR/models/ResNet_MultiProj.py</url>
+          <line>140</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ClusT3$training.coverage" NAME="training Coverage Results" MODIFIED="1698439290264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CIFAR" />
   </component>
 </project>
