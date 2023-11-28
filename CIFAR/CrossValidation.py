@@ -17,11 +17,7 @@ def experiment(args):
     print('Loading model')
     proj_layer = [args.project_layer1, args.project_layer2, args.project_layer3, args.project_layer4]
     model = create_model.create_model(args, proj_layer).to(device)
-    checkpoint = torch.load(args.root + 'weights/' + args.load + '.pth')
 
-    model.load_state_dict(checkpoint['state_dict'])
-
-    state = copy.deepcopy(model.state_dict())
     print('Projection:', args.projection)
     print('Projection Layers:', proj_layer)
     print('Number of iterations:', args.niter)
