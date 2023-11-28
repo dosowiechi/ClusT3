@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e7b81c5-73e8-4596-a6df-130ec8152d4d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ClusT3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ClusT3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CIFAR/CrossValidation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,7 +37,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/davidoso/Documents/PythonScripts/Winter2023/ClusT3/CIFAR&quot;
+    &quot;last_opened_file_path&quot;: &quot;/home/davidoso/Documents/PythonScripts/Winter2023/ClusT3&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -89,6 +95,11 @@
       <workItem from="1697644628820" duration="1205000" />
       <workItem from="1697716716309" duration="16000" />
       <workItem from="1698426652692" duration="3545000" />
+      <workItem from="1698508455765" duration="697000" />
+      <workItem from="1699646091156" duration="986000" />
+      <workItem from="1700059585772" duration="17000" />
+      <workItem from="1700173323091" duration="2000" />
+      <workItem from="1701182669679" duration="324000" />
     </task>
     <task id="LOCAL-00001" summary="Add Tiny-imagenet">
       <created>1698439752452</created>
@@ -97,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698439752452</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add Tiny-imagenet">
+      <created>1698508491810</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698508491810</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
